@@ -12,8 +12,8 @@ import { Card } from '../components/ui/Card';
 
 // Validation Schemas
 const loginSchema = z.object({
-  email: z.string().email('Please enter a valid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  email: z.string().min(1, 'Please enter a valid email or username'),
+  password: z.string().min(5, 'Password must be at least 5 characters'),
 });
 
 const registerSchema = z.object({
@@ -165,10 +165,10 @@ const Auth = () => {
             >
               <Input
                 id="email"
-                type="email"
-                label="Email Address"
+                type="text"
+                label="Email or Username"
                 icon={<Mail className="h-4.5 w-4.5" />}
-                placeholder="name@email.com"
+                placeholder="name@email.com or admin"
                 error={loginErrors.email?.message}
                 {...loginRegister('email')}
               />
@@ -194,7 +194,7 @@ const Auth = () => {
 
               {/* Demo credentials tip */}
               <div className="p-3 rounded-lg bg-teal-50 dark:bg-teal-950/10 border border-teal-100 dark:border-teal-900/20 text-[10px] text-teal-700 dark:text-teal-400 leading-normal">
-                💡 <strong>Demo Credentials:</strong> Use any email with at least a 6-character password to easily test the portal logic. (Ex. <code>patient@medsphere.com</code> / <code>password123</code>)
+                💡 <strong>Demo Credentials:</strong> Use any email with at least a 5-character password to easily test the portal logic. (Ex. <code>admin</code> / <code>admin</code>)
               </div>
 
               <Button
